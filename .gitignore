@@ -1,3 +1,9 @@
+#custom start
+**/application-local.yml
+
+#custom end
+
+
 HELP.md
 .gradle
 build/
