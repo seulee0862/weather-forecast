@@ -16,13 +16,22 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-web'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    runtimeOnly 'com.mysql:mysql-connector-j'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 
-    //mo
+    //redis
+    implementation 'redis.clients:jedis:4.3.1'
+    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+    //cache
+    implementation 'org.springframework.boot:spring-boot-starter-cache'
+    //aop
+    implementation 'org.springframework.boot:spring-boot-starter-aop'
+
+    //lombok
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
-
 
 }
 

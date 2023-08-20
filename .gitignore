@@ -1,5 +1,6 @@
 #custom start
 **/application-local.yml
+/src/main/resources/query
 
 #custom end
 
