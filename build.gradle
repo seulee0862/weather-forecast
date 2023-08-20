@@ -26,6 +26,8 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-redis'
     //cache
     implementation 'org.springframework.boot:spring-boot-starter-cache'
+    //aop
+    implementation 'org.springframework.boot:spring-boot-starter-aop'
 
     //lombok
     compileOnly 'org.projectlombok:lombok'
