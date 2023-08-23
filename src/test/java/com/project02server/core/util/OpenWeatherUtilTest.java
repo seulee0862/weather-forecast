@@ -38,7 +38,7 @@ public class OpenWeatherUtilTest {
 		when(restTemplate.getForEntity(anyString(), any()))
 			.thenReturn(ResponseEntity.ok(mockResponse));
 
-		ForecastResponse forecastResponse = openWeatherUtil.getForeCastByCoordinate(anyString(), anyString());
+		ForecastResponse forecastResponse = openWeatherUtil.getForeCastByCoordinate(anyDouble(), anyDouble());
 
 		//then
 		assertNotNull(forecastResponse);
@@ -56,7 +56,7 @@ public class OpenWeatherUtilTest {
 		when(restTemplate.getForEntity(anyString(), any()))
 			.thenReturn(ResponseEntity.ok(mockResponse));
 
-		CurrentWeatherResponse response = openWeatherUtil.getCurrentWeather(anyString(), anyString());
+		CurrentWeatherResponse response = openWeatherUtil.getCurrentWeather(anyDouble(), anyDouble());
 
 		//then
 		assertNotNull(response);

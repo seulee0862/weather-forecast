@@ -1,8 +1,8 @@
-#custom start
+#custom open
 **/application-local.yml
 /src/main/resources/query
-
-#custom end
+/src/main/resources/application-actuator.yml
+#custom close
 
 
 HELP.md

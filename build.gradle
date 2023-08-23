@@ -17,6 +17,10 @@ repositories {
 
 dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    //logback
+    testImplementation 'ch.qos.logback:logback-classic:1.4.11'
+    testImplementation 'ch.qos.logback:logback-core:1.4.11'
+
     runtimeOnly 'com.mysql:mysql-connector-j'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
@@ -26,8 +30,15 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-redis'
     //cache
     implementation 'org.springframework.boot:spring-boot-starter-cache'
+
     //aop
     implementation 'org.springframework.boot:spring-boot-starter-aop'
+    //actuator
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    //prometheus
+    implementation 'io.micrometer:micrometer-registry-prometheus:1.11.2'
+    //loki
+    implementation 'com.github.loki4j:loki-logback-appender:1.4.0'
 
     //lombok
     compileOnly 'org.projectlombok:lombok'
