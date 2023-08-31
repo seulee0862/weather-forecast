@@ -6,5 +6,5 @@ import lombok.Setter;
 @Getter @Setter
 class Rain {
 
-	private Double h1;
+	private double h1;
 }

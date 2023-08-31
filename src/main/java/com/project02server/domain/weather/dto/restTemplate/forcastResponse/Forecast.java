@@ -29,7 +29,7 @@ public class Forecast implements OpenWeather {
 	private String dt_txt;
 
 	@Override
-	public Double getTemperature() {
+	public Double fetchTemperature() {
 
 		BigDecimal temp = BigDecimal.valueOf(this.main.getTemp() - 273.15);
 
@@ -39,11 +39,29 @@ public class Forecast implements OpenWeather {
 	}
 
 	@Override
-	public LocalDateTime getDateTimeInKorea() {
+	public LocalDateTime fetchDateTimeInKorea() {
 
 		return LocalDateTime.ofInstant(
 			Instant.ofEpochSecond(this.dt),
 			ZoneId.of("Asia/Seoul")
 		);
+	}
+
+	@Override
+	public int fetchHumid() {
+		return this.main.getHumidity();
+	}
+
+	@Override
+	public int fetchRain() {
+
+		return this.rain == null
+			? 0
+			: (int)(this.rain.get_3h() * 100);
+	}
+
+	@Override
+	public int fetchPop() {
+		return (int)(this.getPop() * 100);
 	}
 }

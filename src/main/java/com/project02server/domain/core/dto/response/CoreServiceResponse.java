@@ -15,23 +15,16 @@ import lombok.ToString;
 @Getter @Setter
 public class CoreServiceResponse {
 
-	WeatherInfo currentWeatherInfo;
-
 	List<WeatherInfo> forecastInfos;
 
 	@Builder
-	public CoreServiceResponse(WeatherInfo currentWeatherInfo
-		, List<WeatherInfo> forecastInfos) {
-
-		this.currentWeatherInfo = currentWeatherInfo;
+	public CoreServiceResponse(List<WeatherInfo> forecastInfos) {
 		this.forecastInfos = forecastInfos;
 	}
 
-	public static CoreServiceResponse of (WeatherInfo currentWeatherInfo,
-		List<WeatherInfo> forecastInfos) {
+	public static CoreServiceResponse from (List<WeatherInfo> forecastInfos) {
 
 		return CoreServiceResponse.builder()
-			.currentWeatherInfo(currentWeatherInfo)
 			.forecastInfos(forecastInfos)
 			.build();
 	}

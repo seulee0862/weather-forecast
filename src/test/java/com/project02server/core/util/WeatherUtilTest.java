@@ -15,17 +15,17 @@ import org.springframework.web.client.RestTemplate;
 
 import com.project02server.domain.weather.dto.restTemplate.forcastResponse.ForecastResponse;
 import com.project02server.domain.weather.dto.restTemplate.weatherResponse.CurrentWeatherResponse;
-import com.project02server.domain.weather.util.OpenWeatherUtil;
+import com.project02server.domain.weather.util.WeatherUtil;
 
 @ExtendWith(MockitoExtension.class)
-public class OpenWeatherUtilTest {
+public class WeatherUtilTest {
 
 
 	@Mock
 	private RestTemplate restTemplate;
 
 	@InjectMocks
-	private OpenWeatherUtil openWeatherUtil;
+	private WeatherUtil weatherUtil;
 
 	@Test
 	@DisplayName("기상예측정보 반환 성공")
@@ -38,7 +38,7 @@ public class OpenWeatherUtilTest {
 		when(restTemplate.getForEntity(anyString(), any()))
 			.thenReturn(ResponseEntity.ok(mockResponse));
 
-		ForecastResponse forecastResponse = openWeatherUtil.getForeCastByCoordinate(anyDouble(), anyDouble());
+		ForecastResponse forecastResponse = weatherUtil.getForeCastByCoordinate(anyDouble(), anyDouble());
 
 		//then
 		assertNotNull(forecastResponse);
@@ -56,7 +56,7 @@ public class OpenWeatherUtilTest {
 		when(restTemplate.getForEntity(anyString(), any()))
 			.thenReturn(ResponseEntity.ok(mockResponse));
 
-		CurrentWeatherResponse response = openWeatherUtil.getCurrentWeather(anyDouble(), anyDouble());
+		CurrentWeatherResponse response = weatherUtil.getCurrentWeather(anyDouble(), anyDouble());
 
 		//then
 		assertNotNull(response);

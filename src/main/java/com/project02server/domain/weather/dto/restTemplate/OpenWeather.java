@@ -4,7 +4,15 @@ import java.time.LocalDateTime;
 
 public interface OpenWeather {
 
-	Double getTemperature();
+	Double fetchTemperature();
 
-	LocalDateTime getDateTimeInKorea();
+	LocalDateTime fetchDateTimeInKorea();
+
+
+	int fetchHumid();
+
+	int fetchRain();
+
+	int fetchPop();
+
 }

@@ -1,9 +1,9 @@
 package com.project02server.domain.core.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.project02server.common.response.ApiResponse;
 import com.project02server.domain.core.dto.response.CoreServiceResponse;
 import com.project02server.domain.core.service.CoreService;
 
@@ -18,9 +18,9 @@ public class CoreController {
 	private final CoreService coreService;
 
 	@GetMapping("/forecast")
-	public CoreServiceResponse getCoreService(@RequestParam("province") String provinceName) {
-
-		return coreService.getWeatherInfos(provinceName);
+	public ApiResponse<CoreServiceResponse> getCoreService(Double lat, Double lon) {
+		CoreServiceResponse weatherInfos = coreService.getWeatherInfos(lat, lon);
+		return ApiResponse.success(weatherInfos);
 	}
 
 }

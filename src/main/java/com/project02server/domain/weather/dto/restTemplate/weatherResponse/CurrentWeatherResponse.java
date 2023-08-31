@@ -31,7 +31,7 @@ public class CurrentWeatherResponse implements OpenWeather {
 	private Integer cod;
 
 	@Override
-	public Double getTemperature() {
+	public Double fetchTemperature() {
 
 		BigDecimal temp = BigDecimal.valueOf(this.main.getTemp() - 273.15);
 
@@ -41,7 +41,7 @@ public class CurrentWeatherResponse implements OpenWeather {
 	}
 
 	@Override
-	public LocalDateTime getDateTimeInKorea() {
+	public LocalDateTime fetchDateTimeInKorea() {
 
 		return LocalDateTime.ofInstant(
 			Instant.ofEpochSecond(this.dt),
@@ -49,5 +49,24 @@ public class CurrentWeatherResponse implements OpenWeather {
 		);
 	}
 
+	@Override
+	public int fetchHumid() {
+		return this.main.getHumidity();
+	}
+
+	@Override
+	public int fetchRain() {
+
+		return this.rain == null
+			? 0
+			: (int)(this.rain.getH1() * 100);
+	}
+
+	//TODO fetchPop메서드는 오직 현재날씨에서만 기능구현하지 않은 예외케이스이다.
+	// 코드변형있이 생겨 문제가 발생할 경우 OpenWeather interface Refactoring예정
+	@Override
+	public int fetchPop() {
+		return -1;
+	}
 }
 
