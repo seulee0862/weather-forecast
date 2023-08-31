@@ -9,10 +9,10 @@ services:
     container_name: project02-server
     ports:
       - "8090:8080"
-    environment:
-      - SPRING_DATASOURCE_URL=jdbc:mysql://host.docker.internal:3306/project02?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
-      - SPRING_DATASOURCE_USERNAME=root
-      - SPRING_DATASOURCE_PASSWORD=1234
+    env_file:
+      - ./env
+    volumes:
+      - /Users/lsh/Documents/config/grafana/log:/app/logs
 
     depends_on:
       - redis
