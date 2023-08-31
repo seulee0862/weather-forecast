@@ -43,7 +43,7 @@ public class GloverExceptionHandler {
 	@ExceptionHandler(Exception.class)
 	protected ResponseEntity<CustomErrorResponse> handleException(Exception e) {
 		log.error("Exception", e);
-		CustomErrorResponse errorResponse = CustomErrorResponse.of(HttpStatus.INTERNAL_SERVER_ERROR.toString(), e.getMessage());
+		CustomErrorResponse errorResponse = CustomErrorResponse.of(HttpStatus.INTERNAL_SERVER_ERROR.toString(), "Server error");
 		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorResponse);
 	}
 }
