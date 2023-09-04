@@ -34,6 +34,13 @@ jobs:
           FILE_NAME: application-product.yml
         run: echo $CONFIG_TEXT | base64 -d > $DIR/$FILE_NAME
 
+      - name: create actuator config.yml
+        env:
+          CONFIG_TEXT: ${{ secrets.ACTUATOR_CONFIG }}
+          DIR: src/main/resources
+          FILE_NAME: application-actuator.yml
+        run: echo $CONFIG_TEXT | base64 -d > $DIR/$FILE_NAME
+
       - name: Build with Gradlew
         env:
           CHEFFI_DIRECTORY: ${{ secrets.OPEN_WEATHER_CONFIG }}

@@ -28,7 +28,6 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 
     //redis
-    implementation 'redis.clients:jedis:4.3.1'
     implementation 'org.springframework.boot:spring-boot-starter-data-redis'
     //cache
     implementation 'org.springframework.boot:spring-boot-starter-cache'
