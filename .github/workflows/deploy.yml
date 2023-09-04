@@ -45,10 +45,8 @@ jobs:
         run: echo "${{ secrets.DOCKER_APP_ENV }}" | base64 -d > ./docker_app_env
 
       - name: Build with Gradlew
-        env:
-          PROJECT02_LOG_DIRECTORY: ${{ secrets.PROJECT02_LOG_DIRECTORY }}
         run: |
-          ./gradlew clean build
+          ./gradlew clean build -Pspring.profiles.active=product
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v2
