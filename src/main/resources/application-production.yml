@@ -11,4 +11,4 @@ redis:
 
 logging:
   file:
-    name: ${PROJECT02_ROOT_DIRECTORY}/log/project02.log
+    name: ${{secrets.PROJECT02_ROOT_DIRECTORY}}/log/project02.log
