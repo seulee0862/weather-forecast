@@ -61,15 +61,15 @@ jobs:
             ./Dockerfile,
              ./docker-compose.yml"
           target: ${{ secrets.PROJECT02_ROOT_DIRECTORY }}
-#
-#      - name: SSH Execute command on EC2
-#        uses: appleboy/ssh-action@master
-#        with:
-#          host: ${{ secrets.EC2_HOST }}
-#          username: ${{ secrets.EC2_USER }}
-#          key: ${{ secrets.EC2_KEY }}
-#          script: |
-#            cd /home/ec2-user/cheffifolder
-#            docker-compose down --rmi local
-#            docker image prune -f
-#            docker-compose up --build -d
+
+      - name: SSH Execute command on EC2
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_KEY }}
+          script: |
+            cd ${{ secrets.PROJECT02_ROOT_DIRECTORY }}
+            docker-compose down --rmi local
+            docker image prune -f
+            docker-compose up --build -d
