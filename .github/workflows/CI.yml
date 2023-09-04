@@ -2,9 +2,8 @@ name: test before merging
 
 
 on:
-  workflow_dispatch:
-    push:
-      branches:
+  push:
+    branches:
         - test
 #  pull_request:
 #    branches:
