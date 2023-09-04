@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/project02?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+    username: root
+    password: 1234
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+redis:
+  host: host.docker.internal
+  port: 6379
+
+logging:
+  file:
+    name: ${PROJECT02_ROOT_DIRECTORY}/log/project02.log
