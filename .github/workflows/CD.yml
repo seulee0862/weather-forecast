@@ -35,6 +35,7 @@ jobs:
           name: build-artifacts
           path: |
             ./docker_app_env
+            ./docker-compose.yml
             build/libs/*.jar
 
   deploy:
