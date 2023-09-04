@@ -27,14 +27,14 @@ jobs:
           ./gradlew clean build
 
       - name: Create env file
-        run: echo "${{ secrets.DOCKER_APP_ENV }}" > ./env
+        run: echo "${{ secrets.DOCKER_APP_ENV }}" > ./docker_app_env
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v2
         with:
           name: build-artifacts
           path: |
-            ./env
+            ./docker_app_env
             build/libs/*.jar
 
   deploy:
@@ -54,7 +54,10 @@ jobs:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_KEY }}
-          source: "build/libs/*-server-0.0.1-SNAPSHOT.jar, ./env, ./Dockerfile, ./docker-compose.yml"
+          source: "build/libs/*-server-0.0.1-SNAPSHOT.jar,
+           ./docker_app_env,
+            ./Dockerfile,
+             ./docker-compose.yml"
           target: ${{ secrets.PROJECT02_ROOT_DIRECTORY }}
 #
 #      - name: SSH Execute command on EC2

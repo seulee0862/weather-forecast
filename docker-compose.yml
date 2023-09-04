@@ -10,7 +10,7 @@ services:
     ports:
       - "8090:8080"
     env_file:
-      - ./env
+      - ./docker_app_env
     volumes:
       - /Users/lsh/Documents/config/grafana/log:/app/logs
     depends_on:
