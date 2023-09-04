@@ -3,6 +3,7 @@ spring:
     group:
       "local": "local, actuator, weather"
       "default": "local, actuator, weather"
+      "product": "product, actuator, weather"
 
   jpa:
     hibernate:

@@ -8,7 +8,7 @@ services:
     image: project02-server
     container_name: project02-server
     ports:
-      - "8090:8080"
+      - "8080:8080"
     env_file:
       - ./docker_app_env
     volumes:

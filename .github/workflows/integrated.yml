@@ -24,6 +24,20 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
+      - name: create OpenWeather config.yml
+        env:
+          CONFIG_TEXT: ${{ secrets.OPEN_WEATHER_CONFIG }}
+          DIR: src/main/resources
+          FILE_NAME: application-weather.yml
+        run: echo $CONFIG_TEXT  > $DIR/$FILE_NAME
+
+      - name: create local config.yml
+        env:
+          CONFIG_TEXT: ${{ secrets.PRODUCT_CONFIG }}
+          DIR: src/main/resources
+          FILE_NAME: application-product.yml
+        run: echo $CONFIG_TEXT  > $DIR/$FILE_NAME
+
       - name: Set execute permissions for Gradle wrapper
         run: chmod +x gradlew
 

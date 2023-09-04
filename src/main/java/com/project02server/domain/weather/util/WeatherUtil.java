@@ -7,7 +7,6 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import com.project02server.common.exception.customException.BusinessException;
-import com.project02server.domain.weather.dto.restTemplate.forcastResponse.Forecast;
 import com.project02server.domain.weather.dto.restTemplate.forcastResponse.ForecastResponse;
 import com.project02server.domain.weather.dto.restTemplate.weatherResponse.CurrentWeatherResponse;
 
@@ -19,12 +18,9 @@ public class WeatherUtil {
 
 	@Value("${weather.key}")
 	private String API_KEY;
-	@Value("${weather.url.base-url}")
-	private String BASE_URL;
-	@Value("${weather.url.forecast-url}")
-	private String FORECAST_URL;
-	@Value("${weather.url.current-weather-url}")
-	private String CURRENT_WEATHER_URL;
+	private String BASE_URL = "https://api.openweathermap.org/data/2.5/";
+	private String FORECAST_URL = "forecast";
+	private String CURRENT_WEATHER_URL = "weather";
 
 	private final RestTemplate restTemplate;
 
