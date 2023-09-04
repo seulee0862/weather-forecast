@@ -8,7 +8,3 @@ spring:
 redis:
   host: host.docker.internal
   port: 6379
-
-logging:
-  file:
-    name: ${PROJECT02_ROOT_DIRECTORY}/log/project02.log
