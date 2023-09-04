@@ -1,0 +1,6 @@
+weather:
+  key: fd810a203a1e226e8efd5ffed21c3e36
+  url:
+    base-url: https://api.openweathermap.org/data/2.5/
+    forecast-url: forecast
+    current-weather-url: weather

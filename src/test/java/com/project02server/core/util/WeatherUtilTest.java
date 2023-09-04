@@ -4,18 +4,19 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.*;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
+import com.project02server.config.WeatherUtilForTest;
 import com.project02server.domain.weather.dto.restTemplate.forcastResponse.ForecastResponse;
 import com.project02server.domain.weather.dto.restTemplate.weatherResponse.CurrentWeatherResponse;
-import com.project02server.domain.weather.util.WeatherUtil;
+
 
 @ExtendWith(MockitoExtension.class)
 public class WeatherUtilTest {
@@ -24,8 +25,12 @@ public class WeatherUtilTest {
 	@Mock
 	private RestTemplate restTemplate;
 
-	@InjectMocks
-	private WeatherUtil weatherUtil;
+	private WeatherUtilForTest weatherUtil;
+
+	@BeforeEach
+	public void setup() {
+		weatherUtil = new WeatherUtilForTest(restTemplate);
+	}
 
 	@Test
 	@DisplayName("기상예측정보 반환 성공")
