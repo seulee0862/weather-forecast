@@ -13,7 +13,6 @@ services:
       - ./env
     volumes:
       - /Users/lsh/Documents/config/grafana/log:/app/logs
-
     depends_on:
       - redis
 
