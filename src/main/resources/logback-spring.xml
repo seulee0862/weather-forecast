@@ -6,13 +6,13 @@
 
     <springProfile name="local, default">
         <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>${PROJECT02_ROOT_DIRECTORY}/log/project02.log</file>
+        <file>${PROJECT02_LOG_DIRECTORY}/project02.log</file>
             <encoder>
                 <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
                 <charset>utf8</charset>
             </encoder>
             <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
-                <fileNamePattern>${PROJECT02_ROOT_DIRECTORY}/log/backup/app-%d{yyyy-MM-dd}.%i.log.zip</fileNamePattern>
+                <fileNamePattern>${PROJECT02_LOG_DIRECTORY}/backup/app-%d{yyyy-MM-dd}.%i.log.zip</fileNamePattern>
                 <maxFileSize>100MB</maxFileSize>
                 <maxHistory>30</maxHistory>
                 <totalSizeCap>3GB</totalSizeCap>

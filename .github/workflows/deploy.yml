@@ -46,7 +46,7 @@ jobs:
 
       - name: Build with Gradlew
         env:
-          CHEFFI_DIRECTORY: ${{ secrets.OPEN_WEATHER_CONFIG }}
+          PROJECT02_LOG_DIRECTORY: ${{ secrets.PROJECT02_LOG_DIRECTORY }}
         run: |
           ./gradlew clean build
 
