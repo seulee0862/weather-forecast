@@ -27,7 +27,7 @@ jobs:
           FILE_NAME: application-weather.yml
         run: echo $CONFIG_TEXT | base64 -d > $DIR/$FILE_NAME
 
-      - name: create local config.yml
+      - name: create product config.yml
         env:
           CONFIG_TEXT: ${{ secrets.PRODUCT_CONFIG }}
           DIR: src/main/resources
@@ -41,14 +41,14 @@ jobs:
           FILE_NAME: application-actuator.yml
         run: echo $CONFIG_TEXT | base64 -d > $DIR/$FILE_NAME
 
+      - name: Create docker_app_env file
+        run: echo "${{ secrets.DOCKER_APP_ENV }}" | base64 -d > ./docker_app_env
+
       - name: Build with Gradlew
         env:
           CHEFFI_DIRECTORY: ${{ secrets.OPEN_WEATHER_CONFIG }}
         run: |
           ./gradlew clean build
-
-      - name: Create env file
-        run: echo "${{ secrets.DOCKER_APP_ENV }}" > ./docker_app_env
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v2
