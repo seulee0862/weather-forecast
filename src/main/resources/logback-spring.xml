@@ -4,7 +4,7 @@
     <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
     <include resource="org/springframework/boot/logging/logback/console-appender.xml"/>
 
-    <springProfile name="local, default">
+    <springProfile name="product">
         <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${PROJECT02_LOG_DIRECTORY}/project02.log</file>
             <encoder>
