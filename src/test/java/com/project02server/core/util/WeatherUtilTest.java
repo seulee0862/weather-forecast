@@ -21,7 +21,6 @@ import com.project02server.domain.weather.dto.restTemplate.weatherResponse.Curre
 @ExtendWith(MockitoExtension.class)
 public class WeatherUtilTest {
 
-
 	@Mock
 	private RestTemplate restTemplate;
 
@@ -43,7 +42,9 @@ public class WeatherUtilTest {
 		when(restTemplate.getForEntity(anyString(), any()))
 			.thenReturn(ResponseEntity.ok(mockResponse));
 
-		ForecastResponse forecastResponse = weatherUtil.getForeCastByCoordinate(anyDouble(), anyDouble());
+		ForecastResponse forecastResponse = weatherUtil.getForeCastByCoordinate(
+			anyDouble(), anyDouble()
+		);
 
 		//then
 		assertNotNull(forecastResponse);
@@ -61,7 +62,9 @@ public class WeatherUtilTest {
 		when(restTemplate.getForEntity(anyString(), any()))
 			.thenReturn(ResponseEntity.ok(mockResponse));
 
-		CurrentWeatherResponse response = weatherUtil.getCurrentWeather(anyDouble(), anyDouble());
+		CurrentWeatherResponse response = weatherUtil.getCurrentWeather(
+			anyDouble(), anyDouble()
+		);
 
 		//then
 		assertNotNull(response);
