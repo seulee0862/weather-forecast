@@ -1,3 +1,11 @@
+
+## 🚀  트러블슈팅
+
+#### [API 호출 제한 문제와 캐싱을 이용한 해결방안](https://daffy-molecule-d69.notion.site/API-2895b740caec454cb500090f68023c48?pvs=4)
+#### [API 호출로 인한 과금을 방지하자](https://daffy-molecule-d69.notion.site/API-8f4e3c33c330410392c64d577b6c2c41?pvs=4)
+---
+
+&nbsp;
 ## 🌳 브랜치 전략
 
 ### `main`
@@ -22,6 +30,7 @@
 - 목적: 이슈에 기반하여 브랜치 생성
 
 ---
+&nbsp;
 
 ## 📝 커밋 컨벤션
 
@@ -33,10 +42,7 @@
 > 📌 참고: `커밋 컨벤션`은 함께 사용 가능<br/>
 > ex) Feat, Fix: fix error, add api
 
-## 🚀  트러블슈팅
 
-
-#### [API 호출 제한 문제와 캐싱을 이용한 해결방안](https://daffy-molecule-d69.notion.site/API-2895b740caec454cb500090f68023c48?pvs=4)
 
 
 

@@ -11,13 +11,40 @@ java {
     sourceCompatibility = '17'
 }
 
+jar {
+    enabled = false
+}
+
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-web'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+
+    runtimeOnly 'com.mysql:mysql-connector-j'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+    //redis
+    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+    //cache
+    implementation 'org.springframework.boot:spring-boot-starter-cache'
+
+    //aop
+    implementation 'org.springframework.boot:spring-boot-starter-aop'
+    //actuator
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    //prometheus
+    implementation 'io.micrometer:micrometer-registry-prometheus:1.11.2'
+    //loki
+    implementation 'com.github.loki4j:loki-logback-appender:1.4.0'
+
+    //lombok
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+
 }
 
 tasks.named('test') {
