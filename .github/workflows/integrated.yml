@@ -1,0 +1,48 @@
+name: test before merging
+
+
+on:
+  pull_request:
+    branches:
+      - release
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v2
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: create OpenWeather config.yml
+        env:
+          CONFIG_TEXT: ${{ secrets.OPEN_WEATHER_CONFIG }}
+          DIR: src/main/resources
+          FILE_NAME: application-weather.yml
+        run: echo $CONFIG_TEXT | base64 -d > $DIR/$FILE_NAME
+
+      - name: create local config.yml
+        env:
+          CONFIG_TEXT: ${{ secrets.PRODUCT_CONFIG }}
+          DIR: src/main/resources
+          FILE_NAME: application-product.yml
+        run: echo $CONFIG_TEXT | base64 -d > $DIR/$FILE_NAME
+
+      - name: create actuator config.yml
+        env:
+          CONFIG_TEXT: ${{ secrets.ACTUATOR_CONFIG }}
+          DIR: src/main/resources
+          FILE_NAME: application-actuator.yml
+        run: echo $CONFIG_TEXT | base64 -d > $DIR/$FILE_NAME
+
+      - name: Set execute permissions for Gradle wrapper
+        run: chmod +x gradlew
+
+      - name: Test with Gradle
+        run: ./gradlew test -i
