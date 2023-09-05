@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  springboot-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: project02-server
+    container_name: project02-server
+    ports:
+      - "8080:8080"
+    env_file:
+      - ./docker_app_env
+    volumes:
+      - /home/ec2-user/project02/log:/app/logs
+    depends_on:
+      - redis
+
+  redis:
+    image: redis:latest

@@ -1,3 +1,13 @@
+#custom open
+**/application-local.yml
+/src/main/resources/query
+/src/main/resources/application-actuator.yml
+/src/main/resources/application-production.yml
+/src/main/resources/application-weather.yml
+/docker_app_env
+#custom close
+
+
 HELP.md
 .gradle
 build/
