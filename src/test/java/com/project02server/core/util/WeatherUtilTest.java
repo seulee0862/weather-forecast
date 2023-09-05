@@ -4,37 +4,22 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.*;
 
-<<<<<<< HEAD
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-=======
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
->>>>>>> feature
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
-<<<<<<< HEAD
 import com.project02server.config.WeatherUtilForTest;
 import com.project02server.domain.weather.dto.restTemplate.forcastResponse.ForecastResponse;
 import com.project02server.domain.weather.dto.restTemplate.weatherResponse.CurrentWeatherResponse;
 
-=======
-import com.project02server.domain.weather.dto.restTemplate.forcastResponse.ForecastResponse;
-import com.project02server.domain.weather.dto.restTemplate.weatherResponse.CurrentWeatherResponse;
-import com.project02server.domain.weather.util.WeatherUtil;
->>>>>>> feature
-
 @ExtendWith(MockitoExtension.class)
 public class WeatherUtilTest {
 
-<<<<<<< HEAD
 	@Mock
 	private RestTemplate restTemplate;
 
@@ -44,14 +29,6 @@ public class WeatherUtilTest {
 	public void setup() {
 		weatherUtil = new WeatherUtilForTest(restTemplate);
 	}
-=======
-
-	@Mock
-	private RestTemplate restTemplate;
-
-	@InjectMocks
-	private WeatherUtil weatherUtil;
->>>>>>> feature
 
 	@Test
 	@DisplayName("기상예측정보 반환 성공")
@@ -64,13 +41,9 @@ public class WeatherUtilTest {
 		when(restTemplate.getForEntity(anyString(), any()))
 			.thenReturn(ResponseEntity.ok(mockResponse));
 
-<<<<<<< HEAD
 		ForecastResponse forecastResponse = weatherUtil.getForeCastByCoordinate(
 			anyDouble(), anyDouble()
 		);
-=======
-		ForecastResponse forecastResponse = weatherUtil.getForeCastByCoordinate(anyDouble(), anyDouble());
->>>>>>> feature
 
 		//then
 		assertNotNull(forecastResponse);
@@ -88,13 +61,9 @@ public class WeatherUtilTest {
 		when(restTemplate.getForEntity(anyString(), any()))
 			.thenReturn(ResponseEntity.ok(mockResponse));
 
-<<<<<<< HEAD
 		CurrentWeatherResponse response = weatherUtil.getCurrentWeather(
 			anyDouble(), anyDouble()
 		);
-=======
-		CurrentWeatherResponse response = weatherUtil.getCurrentWeather(anyDouble(), anyDouble());
->>>>>>> feature
 
 		//then
 		assertNotNull(response);
