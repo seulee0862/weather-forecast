@@ -2,7 +2,8 @@
 ## 🚀  트러블슈팅
 
 #### [API 호출 제한 문제와 캐싱을 이용한 해결방안](https://daffy-molecule-d69.notion.site/API-2895b740caec454cb500090f68023c48?pvs=4)
-#### [API 호출로 인한 과금을 방지하자](https://daffy-molecule-d69.notion.site/API-8f4e3c33c330410392c64d577b6c2c41?pvs=4)
+#### [트러블 방지 → 모니터링 환경 구축](https://daffy-molecule-d69.notion.site/d41f5f5571b643089888e5681afaaacf?pvs=4)
+#### [API KEY, 민감한 설정 값 노출 방지](https://daffy-molecule-d69.notion.site/API-KEY-898c2399eef048dc82e2b0b1351bbcb4?pvs=4)
 ---
 
 &nbsp;
@@ -15,6 +16,7 @@
   - PR(Pull Request)를 통해서만 병합 가능
   - `hotfix`를 제외하고는 `release` 브랜치로부터 병합되어야 함
   - 최신 PR을 제외한 모든 PR은 자동 헤제
+  - (9.4 수정사항) Main branch로는 suquash merger
 
 ### `release`
 - 목적: 통합 테스트 브랜치
