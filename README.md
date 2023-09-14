@@ -16,10 +16,10 @@
 - ### 1차 단계 (완료) : 일기예보 조회 서비스
   - KaKaoMap, Polygon, Open Weather API를 사용한 날씨정보 조회 서비스
     - #### [문제해결: API 호출 제한 문제와 캐싱을 이용한 해결방안](https://daffy-molecule-d69.notion.site/API-2895b740caec454cb500090f68023c48?pvs=4)
-  - Project 초기 환경설정
-    - #### [문제해결: 설정값 노출 방지](https://daffy-molecule-d69.notion.site/API-KEY-898c2399eef048dc82e2b0b1351bbcb4?pvs=4)
+  - CI / CD 설정
+    - #### [Secrets와 GitAction을 활용한 설정정보 숨기](https://daffy-molecule-d69.notion.site/API-KEY-898c2399eef048dc82e2b0b1351bbcb4?pvs=4)
   - Monitoring 환경 구축
-    - #### [기술정리: 모니터링 환경 구축](https://daffy-molecule-d69.notion.site/d41f5f5571b643089888e5681afaaacf?pvs=4)
+    - #### [모니터링 환경은 필요할까?](https://daffy-molecule-d69.notion.site/d41f5f5571b643089888e5681afaaacf?pvs=4)
       - [Prometheus](https://daffy-molecule-d69.notion.site/Prometheus-45b6b7a85bc249fb941b49e269d5b8ab)
       - [Grafana](https://daffy-molecule-d69.notion.site/Prometheus-45b6b7a85bc249fb941b49e269d5b8ab)
       - [Actuator](https://daffy-molecule-d69.notion.site/Actuator-ad7c10d0542e4929ae023faa16382138)
