@@ -45,7 +45,7 @@ public class ControllerAspect {
 		log.error("{}", e.getMessage());
 	}
 
-	@Pointcut("within(com.project02server.domain.core.controller.*)")
+	@Pointcut("within(com.project02server.core.controller.*)")
 	public void controllerLayer() {
 
 	}
