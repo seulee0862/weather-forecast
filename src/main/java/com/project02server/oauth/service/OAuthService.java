@@ -24,7 +24,6 @@ public class OAuthService {
 
 	@Transactional
 	public String oidcLogin(OidcLoginRequest loginRequest, String oAuthProvider) {
-
 		OidcLoginApiService oidcLoginService = providerMap.get(oAuthProvider.toLowerCase());
 		if (oidcLoginService == null) {
 			throw  new CustomAuthenticationException(ErrorCode.NOT_SUPPORTED_OAUTH_PROVIDER);

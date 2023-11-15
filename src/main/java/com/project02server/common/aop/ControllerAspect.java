@@ -18,7 +18,6 @@ public class ControllerAspect {
 
 	@Before("controllerLayer()")
 	public void beforeRequest(JoinPoint joinPoint) {
-
 		log.info("###Start Layer : {} , method :  {} ###",
 			joinPoint.getTarget().getClass().getSimpleName(),
 			joinPoint.getSignature().getName());

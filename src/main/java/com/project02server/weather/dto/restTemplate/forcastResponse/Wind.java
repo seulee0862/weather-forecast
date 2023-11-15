@@ -7,6 +7,7 @@ import lombok.ToString;
 @ToString
 @Getter @Setter
 class Wind {
+
 	private double speed;
 	private int deg;
 	private double gust;

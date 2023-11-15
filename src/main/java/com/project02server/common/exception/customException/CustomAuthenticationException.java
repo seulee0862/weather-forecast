@@ -16,7 +16,6 @@ public class CustomAuthenticationException extends BusinessException{
 	}
 
 	public RuntimeException getOriginalException() {
-
 		return originalException == null
 			? originalException
 			: this;

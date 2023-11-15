@@ -7,6 +7,7 @@ import lombok.ToString;
 @ToString
 @Getter @Setter
 class Coord {
+
 	private double lat;
 	private double lon;
 }

@@ -23,7 +23,6 @@ public class CoreServiceResponse {
 	}
 
 	public static CoreServiceResponse from (List<WeatherInfo> forecastInfos) {
-
 		return CoreServiceResponse.builder()
 			.forecastInfos(forecastInfos)
 			.build();

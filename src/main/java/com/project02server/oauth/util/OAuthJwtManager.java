@@ -32,7 +32,6 @@ public class OAuthJwtManager {
 	private static final String KID = "kid";
 
 	public String getKidFromUnsignedTokenHeader(String token, String iss, String aud) {
-
 		return (String)getUnsignedTokenClaims(token, iss, aud)
 			.getHeader()
 			.get(KID);

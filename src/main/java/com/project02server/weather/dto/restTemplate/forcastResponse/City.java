@@ -7,6 +7,7 @@ import lombok.ToString;
 @ToString
 @Getter @Setter
 class City {
+
 	private int id;
 	private String name;
 	private Coord coord;
@@ -15,5 +16,4 @@ class City {
 	private int timezone;
 	private long sunrise;
 	private long sunset;
-
 }

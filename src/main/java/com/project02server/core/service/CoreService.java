@@ -21,7 +21,6 @@ public class CoreService {
 	private final WeatherOpenAPI weatherUtil;
 
 	public CoreServiceResponse getWeatherInfos(Double lat, Double lon) {
-
 		//현재시간 기준이후 48시간동안의 데이터만 리스트로 변환한다.
 		List<WeatherInfo> weatherInfos = weatherUtil.getForeCastByCoordinate(lat, lon).getList()
 			.stream()

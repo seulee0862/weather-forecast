@@ -16,7 +16,6 @@ public class OidcService {
 	private final OAuthJwtManager oAuthJwtManager;
 
 	private String getKidFromUnsignedIdToken(String token, String iss, String aud) {
-
 		return oAuthJwtManager.getKidFromUnsignedTokenHeader(token, iss, aud);
 	}
 

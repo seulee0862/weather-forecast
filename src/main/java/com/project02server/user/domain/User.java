@@ -28,7 +28,6 @@ public class User {
 	private String oAuthProvider;
 
 	public static User of (String email, String oAuthProvider) {
-
 		return User.builder()
 			.email(email)
 			.oAuthProvider(oAuthProvider)

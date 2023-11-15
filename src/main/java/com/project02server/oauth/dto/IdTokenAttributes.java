@@ -15,6 +15,6 @@ public class IdTokenAttributes {
 	public IdTokenAttributes(Claims claims) {
 		this.email = (String)claims.get("email");
 		this.name = (String)claims.get("nickname");
-		this.profile = profile = (String)claims.get("profile");
+		this.profile = (String)claims.get("profile");
 	}
 }

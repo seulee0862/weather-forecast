@@ -35,7 +35,6 @@ public class WeatherOpenAPI {
 	 */
 	@Cacheable(value = "locationInfo", key = "T(String).format('%s-%s', #lat, #lon)")
 	public ForecastResponse getForeCastByCoordinate(Double lat, Double lon) {
-
 		ForecastResponse result = null;
 
 		String requestUrl = UriComponentsBuilder
@@ -67,7 +66,6 @@ public class WeatherOpenAPI {
 	 * @return CurrentWeatherResponse.class
 	 */
 	public CurrentWeatherResponse getCurrentWeather(Double lat, Double lon) {
-
 		CurrentWeatherResponse result = null;
 
 		String reqeustUrl = UriComponentsBuilder

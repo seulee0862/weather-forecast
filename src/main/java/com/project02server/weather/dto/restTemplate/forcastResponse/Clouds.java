@@ -7,5 +7,6 @@ import lombok.ToString;
 @ToString
 @Getter @Setter
 class Clouds {
+
 	private int all;
 }

@@ -24,7 +24,6 @@ public class OAuthController {
 	@PostMapping("/oauth/login/{provider}")
 	public ResponseEntity<String> oidcLogin(@NotBlank @PathVariable("provider") String oAuthProvider,
 		@RequestBody OidcLoginRequest oidcLoginRequest) {
-
 		String jwt = oAuthService.oidcLogin(oidcLoginRequest, oAuthProvider);
 		return ResponseEntity.ok()
 			.header(HttpHeaders.AUTHORIZATION, "Bearer " + jwt)

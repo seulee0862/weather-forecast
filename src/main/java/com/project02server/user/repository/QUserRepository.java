@@ -19,7 +19,6 @@ public class QUserRepository {
 	private final JPAQueryFactory queryFactory;
 
 	public Optional<User> findByEmailAndPlatform(String email, String oAuthProvider) {
-
 		return Optional.ofNullable(
 			queryFactory
 			.selectFrom(user)
@@ -31,7 +30,6 @@ public class QUserRepository {
 	}
 
 	private BooleanExpression eqEmailAndPlatform(String email, String oAuthProvider) {
-
 		return user.email.eq(email).and(user.oAuthProvider.eq(oAuthProvider));
 	}
 

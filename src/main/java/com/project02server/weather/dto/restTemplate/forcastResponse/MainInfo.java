@@ -7,6 +7,7 @@ import lombok.ToString;
 @ToString
 @Getter @Setter
 class MainInfo {
+
 	private double temp;
 	private double feels_like;
 	private double temp_min;

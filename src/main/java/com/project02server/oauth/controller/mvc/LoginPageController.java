@@ -29,10 +29,9 @@ public class LoginPageController {
 		this.clientSecret = clientSecret;
 		this.oAuthService = oAuthService;
 	}
-
+	
 	@GetMapping("/oauth/kakao/callback")
 	public @ResponseBody ResponseEntity<String> loginCallback(String code) {
-
 		String contentType = "application/x-www-form-urlencoded;charset=utf-8";
 		KakaoTokenDto.Request kakaoTokenRequestDto = KakaoTokenDto.Request.builder()
 			.client_id(clientId)

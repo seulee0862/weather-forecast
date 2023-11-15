@@ -17,13 +17,9 @@ import lombok.ToString;
 public class WeatherInfo {
 
 	private double temp;
-
 	private LocalDateTime dateTime;
-
 	private String dateTimeStr;
-
 	private String humidity;
-
 	private String rainInfo;
 
 	@Builder
@@ -36,7 +32,6 @@ public class WeatherInfo {
 	}
 
 	public static WeatherInfo from(OpenWeather openWeatherResponse) {
-
 		return WeatherInfo.builder()
 			.temp(openWeatherResponse.fetchTemperature())
 			.dateTime(openWeatherResponse.fetchDateTimeInKorea())

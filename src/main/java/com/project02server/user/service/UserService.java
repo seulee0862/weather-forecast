@@ -18,12 +18,10 @@ public class UserService {
 	private final UserRepository userRepository;
 
 	public Optional<User> findByEmailAndPlatform(String email, String oAuthProvider) {
-
 		return getByEmailAndPlatform(email, oAuthProvider);
 	}
 
 	public User signUp(String email, String oAuthProvider){
-
 		return save(email, oAuthProvider);
 	}
 

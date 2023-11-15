@@ -41,7 +41,6 @@ public class KakaoApiService implements OidcLoginApiService {
 
 	@Override
 	public IdTokenAttributes verify(String token, String platform) {
-
 		String aud = kakaoAudMap.get(platform.toLowerCase());
 
 		return oidcService.getPayloadFromIdToken(token, iss, aud,
