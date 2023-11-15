@@ -58,7 +58,8 @@ public class RedisConfig {
 			.serializeValuesWith(RedisSerializationContext.SerializationPair.fromSerializer(redisSerializer))
 			.entryTtl(Duration.ofSeconds(8));
 
-		return RedisCacheManager.RedisCacheManagerBuilder.fromConnectionFactory(redisConnectionFactory)
+		return RedisCacheManager.RedisCacheManagerBuilder
+			.fromConnectionFactory(redisConnectionFactory)
 			.cacheDefaults(redisCacheConfiguration)
 			.build();
 	}
