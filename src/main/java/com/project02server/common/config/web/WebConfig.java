@@ -19,5 +19,11 @@ public class WebConfig implements WebMvcConfigurer {
 			.allowedMethods("GET", "POST","DELETE","PUT","PATCH")
 			.maxAge(3000);
 	}
+
+	@Override
+	public void addInterceptors(InterceptorRegistry registry) {
+		registry.addInterceptor(new JwtInterceptor())
+			.addPathPatterns("/user/subscribe/**");
+	}
 }
 

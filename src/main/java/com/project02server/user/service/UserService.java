@@ -1,10 +1,17 @@
 package com.project02server.user.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import com.project02server.common.code.ErrorCode;
+import com.project02server.common.exception.customException.BusinessException;
+import com.project02server.coordinate.service.CoordinateService;
+import com.project02server.user.domain.Subscribe;
 import com.project02server.user.domain.User;
+import com.project02server.user.dto.request.SubscribeReqeust;
 import com.project02server.user.repository.QUserRepository;
 import com.project02server.user.repository.UserRepository;
 
@@ -16,6 +23,8 @@ public class UserService {
 
 	private final QUserRepository qUserRepository;
 	private final UserRepository userRepository;
+	private final CoordinateService coordinateService;
+	private final SubscribeService subscribeService;
 
 	public Optional<User> findByEmailAndPlatform(String email, String oAuthProvider) {
 		return getByEmailAndPlatform(email, oAuthProvider);
