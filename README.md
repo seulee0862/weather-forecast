@@ -13,7 +13,7 @@ Dev-Ops | 중간 카테고리 |   |   |   |  
   | CI/CD | GitAction | Dokcer |   |  
   | Cloud | AWS | 가비아(domain 구매) |   |  
   | Monitoriong | Prometheus | Grafana | Loki | Promtail
-OpenAPI | OpenWeather | KakaoMap |   |   |  
+OpenAPI | OpenWeather | KakaoMap | KakaoLogin |   |  
 
 - ### [아키텍처](https://github.com/seulee0862/project02-server/wiki/Infra-architecture)
 - ### [브랜치 전략](https://github.com/seulee0862/project02-server/wiki/%EB%B8%8C%EB%9E%9C%EC%B9%98-%EC%A0%84%EB%9E%B5)
