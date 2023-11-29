@@ -1,9 +1,11 @@
 spring:
   profiles:
     group:
-      "local": "local, actuator, weather, oauth"
-      "default": "local, actuator, weather, oauth"
-      "product": "product, actuator, weather, oauth"
+      "local": "local, actuator, weather, oauth, coordinate, mail"
+      "default": "local, actuator, weather, oauth, coordinate, mail"
+      "product": "product, actuator, weather, oauth, coordinate, mail"
+  config:
+    import: classpath:data/application-coordinate.yml
 
   jpa:
     hibernate:
