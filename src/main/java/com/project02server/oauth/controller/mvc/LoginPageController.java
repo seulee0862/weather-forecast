@@ -48,7 +48,7 @@ public class LoginPageController {
 			(oAuthService.oidcLogin(oidcLoginRequest, "kakao"));
 	}
 
-	@GetMapping("/login")
+	@GetMapping("/login-test")
 	public String login() {
 		return "loginForm";
 	}

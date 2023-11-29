@@ -5,9 +5,17 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.project02server.common.code.ErrorCode;
+import com.project02server.common.exception.customException.BusinessException;
+import com.project02server.common.exception.customException.CustomAuthenticationException;
+
 import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.ExpiredJwtException;
+import io.jsonwebtoken.InvalidClaimException;
 import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.MalformedJwtException;
 import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.UnsupportedJwtException;
 import io.jsonwebtoken.security.Keys;
 
 public class JwtUtil {
@@ -26,18 +34,29 @@ public class JwtUtil {
 			.compact();
 	}
 
-	public static Long parseAndVerifyJwt(String jwt) {
+	public static Claims parseAndVerifyJwt(String jwt) {
 		try {
-			Claims claims = Jwts.parserBuilder()
+			return Jwts.parserBuilder()
 				.setSigningKey(SECRET_KEY)
 				.build()
 				.parseClaimsJws(jwt)
 				.getBody();
 
-			return (Long) claims.get("userId", Long.class);
-		} catch (Exception e) {
-			// JWT 검증 실패 처리
-			throw new RuntimeException("JWT verification failed", e);
+		} catch (InvalidClaimException e) {
+			throw new CustomAuthenticationException(ErrorCode.INVALID_PAYLOAD, e);
+		}catch (ExpiredJwtException e) {
+			throw new CustomAuthenticationException(ErrorCode.TOKEN_EXPIRED, e);
+		}catch (UnsupportedJwtException e) {
+			throw new CustomAuthenticationException(ErrorCode.NOT_SUPPORTED_JWT, e);
+		}catch (MalformedJwtException e) {
+			throw new CustomAuthenticationException(ErrorCode.MALFORMED_JWT, e);
+		}catch (Exception e) {
+			throw new BusinessException(e.getMessage());
 		}
+	}
+
+	public static Long getUserId(Claims claims)
+	{
+		return (Long)claims.get("userId", Long.class);
 	}
 }

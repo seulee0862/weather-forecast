@@ -1,10 +1,17 @@
 package com.project02server.user.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import com.project02server.common.code.ErrorCode;
+import com.project02server.common.exception.customException.BusinessException;
+import com.project02server.coordinate.service.CoordinateService;
+import com.project02server.user.domain.Subscribe;
 import com.project02server.user.domain.User;
+import com.project02server.user.dto.request.SubscribeReqeust;
 import com.project02server.user.repository.QUserRepository;
 import com.project02server.user.repository.UserRepository;
 
@@ -16,6 +23,8 @@ public class UserService {
 
 	private final QUserRepository qUserRepository;
 	private final UserRepository userRepository;
+	private final CoordinateService coordinateService;
+	private final SubscribeService subscribeService;
 
 	public Optional<User> findByEmailAndPlatform(String email, String oAuthProvider) {
 		return getByEmailAndPlatform(email, oAuthProvider);
@@ -26,11 +35,38 @@ public class UserService {
 	}
 
 	private User save(String email, String oAuthProvider) {
-		return userRepository.save(User.of(email, oAuthProvider));
+		Subscribe subscribe = subscribeService.createDefaultSubscription();
+		return userRepository.save(User.of(email, oAuthProvider, subscribe));
+	}
+
+	public User findById(Long id) {
+		return userRepository.findById(id)
+			.orElseThrow(() -> new BusinessException(ErrorCode.NOT_FOUND_ENTITY));
 	}
 
 	private Optional<User> getByEmailAndPlatform(String email, String oAuthProvider) {
 		return qUserRepository.findByEmailAndPlatform(email, oAuthProvider);
 	}
 
+	@Transactional
+	public void subscribeToWeather(Long userId, SubscribeReqeust reqeust) {
+		User user = findById(userId);
+
+		if (!coordinateService.existByRegionName(reqeust.getRegionName())) {
+			throw new BusinessException(ErrorCode.INVALID_REGION_NAME);
+		}
+
+		user.getSubscribe().activeSubscription(reqeust.getRegionName());
+	}
+
+	@Transactional
+	public void unsubscribeFromWeather(Long userId) {
+		User user = findById(userId);
+
+		user.getSubscribe().deactivateSubscription();
+	}
+
+	public List<User> findUsersByActiveSubscribe() {
+		return userRepository.findUsersByActiveSubscribe();
+	}
 }
