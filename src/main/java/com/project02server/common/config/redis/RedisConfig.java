@@ -56,9 +56,10 @@ public class RedisConfig {
 		RedisCacheConfiguration redisCacheConfiguration = RedisCacheConfiguration.defaultCacheConfig()
 			.serializeKeysWith(RedisSerializationContext.SerializationPair.fromSerializer(new StringRedisSerializer()))
 			.serializeValuesWith(RedisSerializationContext.SerializationPair.fromSerializer(redisSerializer))
-			.entryTtl(Duration.ofSeconds(8));
+			.entryTtl(Duration.ofDays(2));
 
-		return RedisCacheManager.RedisCacheManagerBuilder.fromConnectionFactory(redisConnectionFactory)
+		return RedisCacheManager.RedisCacheManagerBuilder
+			.fromConnectionFactory(redisConnectionFactory)
 			.cacheDefaults(redisCacheConfiguration)
 			.build();
 	}

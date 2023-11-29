@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <!-- 스타일 정의 -->
+  <style>
+    ul {
+      list-style-type: none; /* 목록 스타일 제거 */
+      padding-left: 0;      /* 왼쪽 패딩 제거 */
+    }
+  </style>
+</head>
+<body>
+<div style="margin:100px;">
+  <h1> 안녕하세요.</h1>
+  <h1> 일기예보 서비스를 제공하는 플랫폼 nalC 입니다.</h1>
+  <br>
+
+  <div align="center" style="border:1px solid black; font-family:verdana;">
+    <h3 style="color:blue"> 현재 시간 기준 3시간 단위의 일기예보입니다. </h3>
+    <div style="font-size:130%">
+      <ul th:each="weather : ${weathers}">
+        <li th:text="|${weather.dateTimeStr}, 온도: ${weather.temp}°C, ${weather.rainInfo}mm, ${weather.humidity}%|"></li>
+      </ul>
+    </div>
+  </div>
+  >
+  <br/>
+</div>
+
+</body>
+</html>
