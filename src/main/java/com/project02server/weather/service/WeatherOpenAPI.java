@@ -1,4 +1,7 @@
-package com.project02server.weather.util;
+package com.project02server.weather.service;
+
+import java.time.LocalDateTime;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.annotation.Cacheable;
@@ -7,6 +10,10 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import com.project02server.common.exception.customException.BusinessException;
+import com.project02server.coordinate.domain.Coordinate;
+import com.project02server.coordinate.dto.CoordinateDto;
+import com.project02server.coordinate.service.CoordinateService;
+import com.project02server.weather.domain.Weather;
 import com.project02server.weather.dto.restTemplate.forcastResponse.ForecastResponse;
 import com.project02server.weather.dto.restTemplate.weatherResponse.CurrentWeatherResponse;
 
@@ -23,6 +30,7 @@ public class WeatherOpenAPI {
 	private String CURRENT_WEATHER_URL = "weather";
 
 	private final RestTemplate restTemplate;
+	private final CoordinateService coordinateService;
 
 	/**
 	 * <p>
@@ -34,7 +42,7 @@ public class WeatherOpenAPI {
 	 * @return ForecastResponse.class
 	 */
 	@Cacheable(value = "locationInfo", key = "T(String).format('%s-%s', #lat, #lon)")
-	public ForecastResponse getForeCastByCoordinate(Double lat, Double lon) {
+	public ForecastResponse retrieveForeCast(Double lat, Double lon) {
 		ForecastResponse result = null;
 
 		String requestUrl = UriComponentsBuilder
@@ -65,7 +73,7 @@ public class WeatherOpenAPI {
 	 * @param lon
 	 * @return CurrentWeatherResponse.class
 	 */
-	public CurrentWeatherResponse getCurrentWeather(Double lat, Double lon) {
+	public CurrentWeatherResponse retrieveCurrentWeather(Double lat, Double lon) {
 		CurrentWeatherResponse result = null;
 
 		String reqeustUrl = UriComponentsBuilder
@@ -87,5 +95,25 @@ public class WeatherOpenAPI {
 		return result;
 	}
 
+	/**
+	 *	좌표정보에 일치하는 모든 지역날씨정보를
+	 *	저장되있지 않은 시간대만 필터링해서 반환
+	 */
+	public List<Weather> retrieveAllWeatherDataByCoordinates(List<CoordinateDto> coordinateDtos, LocalDateTime latestSavedTime) {
+		return coordinateDtos
+			.stream()
+			.flatMap(coordinateDto -> retrieveForeCast(coordinateDto.getLat(), coordinateDto.getLon())
+				.getList()
+				.stream()
+				.map(forcastResponse -> {
+					Weather weather = Weather.from(forcastResponse);
+					Coordinate coordinate = coordinateService.findByLatAndLon(coordinateDto.getLat(), coordinateDto.getLon());
+					weather.addCoordinate(coordinate);
 
+					return weather;
+				})
+			)
+			.filter(weather -> weather.getDateTime().isAfter(latestSavedTime))
+			.toList();
+	}
 }

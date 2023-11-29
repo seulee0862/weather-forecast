@@ -30,7 +30,6 @@ public class Forecast implements OpenWeather {
 
 	@Override
 	public Double fetchTemperature() {
-
 		BigDecimal temp = BigDecimal.valueOf(this.main.getTemp() - 273.15);
 
 		return temp
@@ -40,7 +39,6 @@ public class Forecast implements OpenWeather {
 
 	@Override
 	public LocalDateTime fetchDateTimeInKorea() {
-
 		return LocalDateTime.ofInstant(
 			Instant.ofEpochSecond(this.dt),
 			ZoneId.of("Asia/Seoul")
@@ -54,7 +52,6 @@ public class Forecast implements OpenWeather {
 
 	@Override
 	public int fetchRain() {
-
 		return this.rain == null
 			? 0
 			: (int)(this.rain.get_3h() * 100);

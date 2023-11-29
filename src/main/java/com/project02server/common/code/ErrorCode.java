@@ -9,6 +9,7 @@ public enum ErrorCode {
 
 	//400에러
 	NOT_SUPPORTED_OAUTH_PROVIDER(HttpStatus.BAD_REQUEST, "A-008", "지원하지 않는 OAuth provider 입니다."),
+	INVALID_REGION_NAME(HttpStatus.BAD_REQUEST, "C-002", "유효하지 않은 지역명칭 입니다."),
 
 	//401에러
 	TOKEN_EXPIRED(HttpStatus.UNAUTHORIZED, "A-001", "토큰이 만료되었습니다."),

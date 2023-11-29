@@ -32,14 +32,6 @@ public class User extends BaseTimeEntity {
 	@JoinColumn(name = "weather_subscription_id")
 	private Subscribe subscribe;
 
-	public void setSubscribe(Subscribe subscribe) {
-		this.subscribe = subscribe;
-	}
-
-	public boolean hasSubscribe() {
-		return subscribe != null;
-	}
-
 	public static User of (String email, String oAuthProvider, Subscribe subscribe) {
 		return User.builder()
 			.email(email)
