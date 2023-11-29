@@ -59,7 +59,9 @@ jobs:
           CONFIG_TEXT: ${{ secrets.COORDINATE_CONFIG }}
           DIR: src/main/resources/data
           FILE_NAME: application-coordinate.yml
-        run: echo $CONFIG_TEXT | base64 -d > $DIR/$FILE_NAME
+        run: |
+          mkdir -p $DIR
+          echo $CONFIG_TEXT | base64 -d > $DIR/$FILE_NAME
 
       - name: Create docker_app_env file
         run: echo "${{ secrets.DOCKER_APP_ENV }}" | base64 -d > ./docker_app_env

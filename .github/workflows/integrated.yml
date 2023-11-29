@@ -52,7 +52,9 @@ jobs:
           CONFIG_TEXT: ${{ secrets.COORDINATE_CONFIG }}
           DIR: src/main/resources/data
           FILE_NAME: application-coordinate.yml
-        run: echo $CONFIG_TEXT | base64 -d > $DIR/$FILE_NAME
+        run: |
+          mkdir -p $DIR
+          echo $CONFIG_TEXT | base64 -d > $DIR/$FILE_NAME
 
       - name: create actuator config.yml
         env:
