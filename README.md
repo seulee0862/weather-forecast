@@ -26,8 +26,10 @@ OpenAPI | OpenWeather | KakaoMap |   |   |  
   - CI/CD 설정 [GitAction]
   - Monitoring 구축 [Grafana, Prometheus]
 
-- ### 2차 (진행중) : 일기예보 알림 서비스
-  - 소셜로그인 구현 [OAuth, kakao Login] 
+- ### 2차 (완료) : 일기예보 구독 서비스
+  - 소셜로그인 구현 [OAuth, kakao Login]
+  - 일기예보 데이터 수집
+  - 일기예보 이메일 발송
 
 
 
