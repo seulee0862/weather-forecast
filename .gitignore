@@ -4,6 +4,9 @@
 /src/main/resources/application-actuator.yml
 /src/main/resources/application-production.yml
 /src/main/resources/application-weather.yml
+/src/main/resources/application-oauth.yml
+/src/main/resources/data/application-coordinate.yml
+/src/main/resources/application-mail.yml
 /docker_app_env
 #custom close
 

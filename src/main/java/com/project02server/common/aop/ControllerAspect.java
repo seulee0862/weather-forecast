@@ -18,7 +18,6 @@ public class ControllerAspect {
 
 	@Before("controllerLayer()")
 	public void beforeRequest(JoinPoint joinPoint) {
-
 		log.info("###Start Layer : {} , method :  {} ###",
 			joinPoint.getTarget().getClass().getSimpleName(),
 			joinPoint.getSignature().getName());
@@ -45,7 +44,7 @@ public class ControllerAspect {
 		log.error("{}", e.getMessage());
 	}
 
-	@Pointcut("within(com.project02server.domain.core.controller.*)")
+	@Pointcut("within(com.project02server.core.controller.*)")
 	public void controllerLayer() {
 
 	}

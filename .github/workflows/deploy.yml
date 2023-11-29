@@ -40,6 +40,29 @@ jobs:
           FILE_NAME: application-actuator.yml
         run: echo $CONFIG_TEXT | base64 -d > $DIR/$FILE_NAME
 
+      - name: create email config.yml
+        env:
+          CONFIG_TEXT: ${{ secrets.EMAIL_CONFIG }}
+          DIR: src/main/resources
+          FILE_NAME: application-email.yml
+        run: echo $CONFIG_TEXT | base64 -d > $DIR/$FILE_NAME
+
+      - name: create oauth config.yml
+        env:
+          CONFIG_TEXT: ${{ secrets.OAUTH_CONFIG }}
+          DIR: src/main/resources
+          FILE_NAME: application-oauth.yml
+        run: echo $CONFIG_TEXT | base64 -d > $DIR/$FILE_NAME
+
+      - name: create coordinate config.yml
+        env:
+          CONFIG_TEXT: ${{ secrets.COORDINATE_CONFIG }}
+          DIR: src/main/resources/data
+          FILE_NAME: application-coordinate.yml
+        run: |
+          mkdir -p $DIR
+          echo $CONFIG_TEXT | base64 -d > $DIR/$FILE_NAME
+
       - name: Create docker_app_env file
         run: echo "${{ secrets.DOCKER_APP_ENV }}" | base64 -d > ./docker_app_env
 
@@ -89,5 +112,3 @@ jobs:
           script: |
             cd ${{ secrets.PROJECT02_ROOT_DIRECTORY }}
             ./scripts/server-start.sh
-
-            

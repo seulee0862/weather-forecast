@@ -14,8 +14,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
 import com.project02server.config.WeatherUtilForTest;
-import com.project02server.domain.weather.dto.restTemplate.forcastResponse.ForecastResponse;
-import com.project02server.domain.weather.dto.restTemplate.weatherResponse.CurrentWeatherResponse;
+import com.project02server.weather.dto.restTemplate.forcastResponse.ForecastResponse;
+import com.project02server.weather.dto.restTemplate.weatherResponse.CurrentWeatherResponse;
 
 @ExtendWith(MockitoExtension.class)
 public class WeatherUtilTest {

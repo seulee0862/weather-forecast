@@ -5,8 +5,8 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import com.project02server.common.exception.customException.BusinessException;
-import com.project02server.domain.weather.dto.restTemplate.forcastResponse.ForecastResponse;
-import com.project02server.domain.weather.dto.restTemplate.weatherResponse.CurrentWeatherResponse;
+import com.project02server.weather.dto.restTemplate.forcastResponse.ForecastResponse;
+import com.project02server.weather.dto.restTemplate.weatherResponse.CurrentWeatherResponse;
 
 public class WeatherUtilForTest {
 

@@ -1,18 +1,18 @@
 spring:
   profiles:
     group:
-      "local": "local, actuator, weather"
-      "default": "local, actuator, weather"
-      "product": "product, actuator, weather"
+      "local": "local, actuator, weather, oauth, coordinate, mail"
+      "default": "local, actuator, weather, oauth, coordinate, mail"
+      "product": "product, actuator, weather, oauth, coordinate, mail"
+  config:
+    import: classpath:data/application-coordinate.yml
 
   jpa:
     hibernate:
-      ddl-auto: none
+      ddl-auto: create-drop
     show-sql: false
     properties:
       hibernate:
-        format_sql: false
-        show_sql: false
+        format_sql: true
+        show_sql: true
         default_batch_fetch_size: 100
-
-
