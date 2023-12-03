@@ -33,11 +33,11 @@ jobs:
           FILE_NAME: application-product.yml
         run: echo $CONFIG_TEXT | base64 -d > $DIR/$FILE_NAME
 
-      - name: create email config.yml
+      - name: create mail config.yml
         env:
           CONFIG_TEXT: ${{ secrets.EMAIL_CONFIG }}
           DIR: src/main/resources
-          FILE_NAME: application-email.yml
+          FILE_NAME: application-mail.yml
         run: echo $CONFIG_TEXT | base64 -d > $DIR/$FILE_NAME
 
       - name: create oauth config.yml

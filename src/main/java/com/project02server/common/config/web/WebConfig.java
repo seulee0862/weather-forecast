@@ -10,7 +10,7 @@ import com.project02server.common.config.web.interceptor.JwtInterceptor;
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
 
-	private final String[] FRONTENDS = {"https://3.34.18.190:3005", "https://namomdaero.site"};
+	private final String[] FRONTENDS = {"https://3.34.18.190:3005", "https://nalc.site"};
 
 	@Override
 	public void addCorsMappings(CorsRegistry registry) {
