@@ -26,4 +26,3 @@ public class WebConfig implements WebMvcConfigurer {
 			.addPathPatterns("/user/subscribe/**");
 	}
 }
-
