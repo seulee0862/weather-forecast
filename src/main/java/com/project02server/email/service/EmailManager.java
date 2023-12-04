@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.thymeleaf.context.Context;
 import org.thymeleaf.spring6.SpringTemplateEngine;
 
+import com.project02server.common.code.TemperatureDressCode;
 import com.project02server.email.dto.EmailMessage;
 import com.project02server.user.dto.UserDto;
 import com.project02server.weather.domain.Weather;
@@ -39,6 +40,7 @@ public class EmailManager {
 
 		try {
 			List<WeatherDto> weatherDtos = getWeatherWithin24Hours(userDto.getRegionName(), getMidnight());
+
 			MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage, false, "UTF-8");
 			mimeMessageHelper.setTo(emailMessage.getTo()); // 메일 수신자
 			mimeMessageHelper.setSubject(emailMessage.getSubject()); // 메일 제목
@@ -83,7 +85,13 @@ public class EmailManager {
 
 	private String setContext(List<WeatherDto> weathers, String type) {
 		Context context = new Context();
+		double averageTemp = weathers.stream()
+			.mapToDouble(WeatherDto::getTemp)
+			.average()
+			.orElse(0.0);
+
 		context.setVariable("weathers", weathers);
+		context.setVariable("dressCode", TemperatureDressCode.getDressCode(averageTemp));
 
 		return templateEngine.process(type, context);
 	}
