@@ -41,7 +41,6 @@ public class User extends BaseTimeEntity {
 	}
 
 	@Builder
-
 	public User(String email, String oAuthProvider, Subscribe subscribe) {
 		this.email = email;
 		this.oAuthProvider = oAuthProvider;

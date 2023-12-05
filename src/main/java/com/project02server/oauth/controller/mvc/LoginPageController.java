@@ -38,7 +38,7 @@ public class LoginPageController {
 			.client_secret(clientSecret)
 			.grant_type("authorization_code")
 			.code(code)
-			.redirect_uri("http://localhost:8080/oauth/kakao/callback")
+			.redirect_uri("https://nalc.site/oauth/kakao/callback")
 			.build();
 
 		KakaoTokenDto.Response response = kakaoTokenClient.requestKakaoToken(contentType, kakaoTokenRequestDto);
@@ -46,10 +46,5 @@ public class LoginPageController {
 
 		return ResponseEntity.ok
 			(oAuthService.oidcLogin(oidcLoginRequest, "kakao"));
-	}
-
-	@GetMapping("/login-test")
-	public String login() {
-		return "loginForm";
 	}
 }

@@ -1,7 +1,5 @@
 package com.project02server.weather.controller;
 
-import java.util.List;
-
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -25,10 +23,5 @@ public class WeatherController {
 	public ApiResponse<WeattherForecaseResponse> getWeatherForecast(Double lat, Double lon) {
 		WeattherForecaseResponse weattherForecaseResponse = weatherService.getWeatherForecast(lat, lon);
 		return ApiResponse.success(weattherForecaseResponse);
-	}
-
-	@GetMapping("/test")
-	public List<CoordinateProperties.CoordinateProperty> test() {
-		return properties.getCoordinates();
 	}
 }
