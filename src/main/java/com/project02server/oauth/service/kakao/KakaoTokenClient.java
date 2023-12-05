@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestHeader;
 
 import com.project02server.oauth.dto.KakaoTokenDto;
 
+//ref: https://developers.kakao.com/docs/latest/ko/kakaologin/rest-api
 @FeignClient(url = "https://kauth.kakao.com",name = "kakaoTokenClient")
 public interface KakaoTokenClient {
 
