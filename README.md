@@ -30,6 +30,8 @@ OpenAPI | OpenWeather | KakaoMap | KakaoLogin |   |  
   - 소셜로그인 구현 [OAuth, kakao Login]
   - 일기예보 데이터 수집
   - 일기예보 이메일 발송
+ 
+- ### 3차 (진행중): 서버리스로 변경하기
 
 
 
