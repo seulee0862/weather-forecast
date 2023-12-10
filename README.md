@@ -27,9 +27,9 @@ OpenAPI | OpenWeather | KakaoMap | KakaoLogin |   |  
   - Monitoring 구축 [Grafana, Prometheus]
 
 - ### 2차 (완료) : 일기예보 구독 서비스
-  - 소셜로그인 구현 [OAuth, kakao Login]
+  - 소셜로그인 구현 [OAuth, Kakao Login]
   - 일기예보 데이터 수집
-  - 일기예보 이메일 발송
+  - 일기예보 이메일 발송 [STMP Server]
  
 - ### 3차 (진행중): 서버리스로 변경하기
 
