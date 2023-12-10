@@ -5,7 +5,7 @@
 <h2>기술 & 도구</h2>
 
 
-Back-end | Spring boot(3.1.2) | Java(17) | JPA & queryDSL |   |  
+Back-end | Spring boot(3.1.2) | Java(17) | JPA |   |  
 -- | -- | -- | -- | -- | --
 Front-end | React(18.2.0) | node(14) |   |   |  
 Database | Redis | Mysql |   |   |  
