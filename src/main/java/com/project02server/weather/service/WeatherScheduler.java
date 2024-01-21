@@ -29,7 +29,7 @@ public class WeatherScheduler {
 	public void saveForecastInfos() {
 		List<CoordinateDto> coordinateInfos = coordinateService.getCoordinateInfos();
 		LocalDateTime latestSavedTime = getLatestSavedTime();
-		List<Weather> weathers = weatherOpenAPI.retrieveAllWeatherDataByCoordinates(coordinateInfos, latestSavedTime);
+		List<Weather> weathers = weatherOpenAPI.retrieveAllWeatherDataByCoordinatesAsync(coordinateInfos, latestSavedTime).join();
 
 		weatherService.saveAll(weathers);
 	}
