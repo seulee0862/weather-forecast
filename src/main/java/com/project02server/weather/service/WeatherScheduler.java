@@ -23,15 +23,15 @@ public class WeatherScheduler {
 	private final WeatherService weatherService;
 
 	//메서드 실행시간 평균 5분, 한국시간 기준 월, 목, 일 새벽3시 실행
-	@Scheduled(cron = "0 0 18 ? * TUE,THU,SUN")
+	// @Scheduled(cron = "0 0 18 ? * TUE,THU,SUN")
+	@Scheduled(fixedDelay = 24 * 3600 * 1000)
 	@Transactional
 	public void saveForecastInfos() {
 		List<CoordinateDto> coordinateInfos = coordinateService.getCoordinateInfos();
 		LocalDateTime latestSavedTime = getLatestSavedTime();
-
 		List<Weather> weathers = weatherOpenAPI.retrieveAllWeatherDataByCoordinates(coordinateInfos, latestSavedTime);
 
-		weathers.forEach(weatherService::save);
+		weatherService.saveAll(weathers);
 	}
 	public LocalDateTime getLatestSavedTime() {
 		return weatherService.getFirstByOrderByDateTimeDesc()

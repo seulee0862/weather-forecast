@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.project02server.weather.domain.Weather;
 import com.project02server.weather.dto.WeatherDto;
 import com.project02server.weather.dto.response.WeattherForecaseResponse;
+import com.project02server.weather.repository.WeatherJdbcRepository;
 import com.project02server.weather.repository.WeatherRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -19,6 +20,7 @@ import lombok.RequiredArgsConstructor;
 public class WeatherService {
 
 	private final WeatherRepository weatherRepository;
+	private final WeatherJdbcRepository weatherJdbcRepository;
 	private final WeatherOpenAPI weatherOpenAPI;
 
 	public WeattherForecaseResponse getWeatherForecast(Double lat, Double lon) {
@@ -43,12 +45,12 @@ public class WeatherService {
 		return weatherRepository.findWeatherWithin24Hours(regionName, startDateTime, endDateTime);
 	}
 
-	public Weather save(Weather weather) {
-		return weatherRepository.save(weather);
-	}
-
 	public Optional<Weather> getFirstByOrderByDateTimeDesc() {
 		return weatherRepository.findFirstByOrderByDateTimeDesc();
+	}
+
+	public Integer saveAll(List<Weather> weathers) {
+		return weatherJdbcRepository.saveAll(weathers);
 	}
 
 }
